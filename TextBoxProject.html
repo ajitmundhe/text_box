@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Text Box</title>
     <link rel="stylesheet" href="TextBox.css">
 </head>
 <body>
@@ -14,7 +14,7 @@
         <form class="textboxform"> 
             <label > Enter your text below </label>
             <br><br>
-            <textarea  id="text" cols="70" rows="10" onkeyup="updateinfo" autofocus> </textarea>
+            <textarea  id="text" cols="70" rows="10"  autofocus onkeyup="updateInfo()"> </textarea>
             <br><br> 
             <button type="button" onclick="transformUpperCase()">UPPERCASE</button>
             <button type="button" onclick="transformLowerCase()">LOWERCASE</button>
@@ -26,15 +26,15 @@
 
             <br><br>
            
-            <h2 id="textinfo">This text contains 0 words and 0 characters </h2>
+            <h2 id="textInfo">This text contains 0 words and 0 characters </h2>
         </form>
     </div>
 
 
     <script>
-         let colour=black;
+         let colour="black";
         let text=document.getElementById("text");
-        let textInfo=document.getElementById('textinfo');
+        let textinfo=document.getElementById('textInfo');
        
         function transformUpperCase()
         {
@@ -59,7 +59,8 @@
      
         function changeColor()
         {
-            let colour=prompt(("Enter your fav Color : ").toLowerCase());
+             colour=prompt(("Enter your fav Color : ").toLowerCase());
+            
              text.style.color=colour;
         }
 
@@ -68,7 +69,18 @@
              text.style.textDecoration=`underline 2px solid ${colour} `;
         }
 
+       function updateInfo()
+       {
+           // let element=document.getElementById("text");
+           let words=text.value.trim().split(" ").length;
+         
+         //   let letters=element.value.length;
+            let target=document.getElementById("textInfo");
+            target.innerHTML=`This text contains ${words} words and ${text.value.length} characters `;
 
+
+
+       }
     </script>
 </body>
 </html>
